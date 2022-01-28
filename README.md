@@ -1,3 +1,3 @@
-# git_test
+# Coding Notes
 
-Hello Odin!
+Various files used to practice coding exercises
