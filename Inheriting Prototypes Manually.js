@@ -33,3 +33,6 @@ mike.introduce(); // "My name is Mike and I study Computer Science"
 
 // Calling the method in the Person object after linking prototypes 
 mike.calcAge(); // 17
+
+// Fixing the prototype assignment of Student
+Student.prototype.constructor = Student;
