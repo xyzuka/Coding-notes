@@ -2,11 +2,11 @@
 const Person = function (firstName, birthYear) {
   this.firstName = firstName;
   this.birthYear = birthYear;
-};
+}
 
 Person.prototype.calcAge = function() {
   console.log(2037 - this.birthYear);
-};
+}
 
 // Child class to inherit parent properties
 const Student = function(firstName, birthYear, course) {
