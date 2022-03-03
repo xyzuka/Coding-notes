@@ -167,3 +167,72 @@ tesla.chargeBattery();
 EV.prototype.constructor = EV;
 
 // If the child object has its own method that has the same name as its parent object (eg. Car.prototype.accelerate and EV.prototype.accelerate existing together) , the first method that appears will be run first but then the second method below will override the first method -> thus satisfying the definition of polymorphism (having different variations)
+
+/******************** END *********************/
+
+// Coding Challenge #4
+
+/* 
+
+1. Re-create challenge #3, but this time using ES6 classes: create an 'EVCl' child class of the 'CarCl' class
+
+2. Make the 'charge' property private;
+
+3. Implement the ability to chain the 'accelerate' and 'chargeBattery' methods of this class, and also update the 'brake' method in the 'CarCl' class. They experiment with chaining!
+
+DATA CAR 1: 'Rivian' going at 120 km/h, with a charge of 23%
+
+*/
+
+/******************* SOLUTION *******************/
+
+class CarCl {
+  constructor(make, currentSpeed) {
+    this.make = make;
+    this.currentSpeed = currentSpeed;
+  }
+  
+  // Methods
+  accelerate() {
+    this.currentSpeed += 10;
+    console.log(`${this.make} is going at ${this.currentSpeed} km/h`);
+    return this;
+  }
+  
+  brake() {
+    this.currentSpeed -= 5;
+    console.log(`${this.make} is going at ${this.currentSpeed} km/h`);
+    return this;
+  } 
+}
+
+// Creating child object
+class EVCl extends CarCl {
+  // defining fields out the methd
+  #charge;
+  
+  constructor(make, currentSpeed, charge) {
+    super(make, currentSpeed);
+    this.#charge = charge;
+  }
+  
+  chargeBattery() {
+    this.#charge = 90;
+    console.log(`${this.make} has been recharged, with a charge of ${this.#charge}%.`);
+    return this;
+  }
+}
+
+const rivian = new EVCl('Rivian', 120, 23);
+
+// Testing chaining
+rivian
+  .accelerate()
+  .accelerate()
+  .accelerate()
+  .accelerate()
+  .brake()
+  .brake()  
+  .chargeBattery();
+
+/******************** END *********************/
