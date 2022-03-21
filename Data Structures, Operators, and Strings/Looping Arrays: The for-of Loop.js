@@ -1,0 +1,48 @@
+"use strict";
+
+// Looping Array: The for-of Loop 
+
+const restaurant = {
+	name: "Classico Italiano",
+	location: "Via Angelo Tavanti 23, Firenze, Italy",
+	categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+	starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+	mainMenu: ["Pizza", "Pasta", "Risotto"],
+
+	openingHours: {
+		thu: {
+			open: 12,
+			close: 22
+		},
+		fri: {
+			open: 11,
+			close: 23
+		},
+		sat: {
+			open: 0, // Open 24 hours
+			close: 24
+		}
+	},
+
+	order: function (starterIndex, mainIndex) {
+		return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+	},
+
+	// you can pass in object properties into a function argument
+	orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+		console.log(
+			`Order complete! You ordered ${this.starterMenu[starterIndex]} as a starter, and ${this.mainMenu[mainIndex]} as a main. You will receive your order at ${time} to ${address} `
+		); // "Order complete! You ordered Garlic Bread as a starter, and Risotto as a main. You will receive your order at 10:30 to Mashman Avenue "
+	}
+};
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+// for of loop simple example - Logging all items in the menu with a loop
+for (const item of menu) console.log(item);
+
+// using destructuring with a for loop to display a numbered menu in the console log
+// i and el are destructuring assignments, menu.entries() is an array iterator
+for (const [i, el] of menu.entries()) {
+	console.log(`${i + 1}: ${el}`);
+}
