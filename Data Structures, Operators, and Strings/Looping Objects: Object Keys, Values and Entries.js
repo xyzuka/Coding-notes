@@ -50,14 +50,15 @@ for (const day of properties) {
 
 console.log(openString) //"We are open on 3 days: thu, fri, sat,"
 
-// Property values 
+// Property values - shows the values inside a property
 const values = Object.values(restaurant.openingHours);
 console.log(values);
 
-// Entire object
+// Entire object - shows both the properties and its values
 const entries = Object.entries(restaurant.openingHours);
 console.log(entries);
 
+// Looping through the entries to use a template literal on both on the destructured objects and properties
 for(const [day, {open, close}] of entries) {
 	console.log(`On ${day} we open at ${open} and close at ${close}`)
 }
