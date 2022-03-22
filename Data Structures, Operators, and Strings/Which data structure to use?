@@ -1,0 +1,37 @@
+WHICH DATA STRUCTURE SHOULD YOU USE?
+
+SOURCES OF DATA
+- From the program itself, written into the source code
+- From UI, user inputs
+- From external sources, fetched from APIs (Application Programming Interface)
+
+We do we store this data? With data structures!
+
+FOUR TYPES OF DATA STRUCTURES
+- Arrays
+- Objects
+- Sets
+- Maps
+
+WHICH ONE TO USE?
+- If your data is a simple list: Use Arrays or Sets
+- If your data needs a key or value pairs: Use Objects or Maps - keys allow us to describe values
+
+WHEN TO USE THEM?
+1. ARRAYS
+- Use when you need ordered list of values (may contain duplicates)
+- Use when you need to manipulate data
+
+2. SETS
+- Use when working with unique values
+- Use when high-performance is really important
+- Use to remove duplicates from arrays
+
+3. OBJECTS
+- Use when you need to include functions (methods)
+- Use when working with JSON (can convert to map)
+
+4. MAPS
+- Use when you need to simply map key to values
+- Use when you need keys that are NOT strings
+
