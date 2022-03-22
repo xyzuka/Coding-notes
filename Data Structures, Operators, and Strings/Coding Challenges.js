@@ -301,5 +301,43 @@ button.addEventListener('click', function () {
   }
 });
 
+/////////////////////////////////////////////////////////////////
+///////////////////////////////////////
+// Coding Challenge #5
+
+// Convert the variables flights to log the comments below
+
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)
+
+const getCode = str => str.slice(0, 3).toUpperCase();
+
+// Loop through the array to create four console logs
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.startsWith('_Delayed') ? '🔴' : ''} ${type.replaceAll(
+    '_',
+    ' '
+  )} ${getCode(from)} to ${getCode(to)} (${time.replace(':', 'h')})`.padStart(
+    40
+  );
+
+  console.log(output);
+}
+
+// Split the +
+// Split the ;
+// Destructure the four text values out of the array
+// Assign destructured variables to console log it
+// Convert time by using .replace
+// Remove _ on type with .replace
+// Extract first three letters and turn to uppercase
+// Add 🔴 in front with .startsWith
+// Wrap the string with .padStart
 
 
