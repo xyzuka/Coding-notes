@@ -49,3 +49,55 @@ book.apply(pacificair, flightDataSusan); // Christine Lai booked a seat on Pacif
 
 // Arrays can be used with the call method by using the spread operator
 book.call(fijiairways, ...flightDataSusan); // Christine Lai booked a seat on Fiji Airways flight FJ222
+
+/***************************************************/
+
+//* BIND METHOD
+// Bind does not immediately call the function -> it returns a new function where the this keyword is bound
+
+// Will not call the book function - where the this keyword will always be set to pacificair
+// Useful for when calling a function multiple times
+const bookPA = book.bind(pacificair);
+bookPA('230', 'Steven Hang'); // Steven Hang booked a seat on Pacific Air flight PA230
+
+// We can set property values by providing it as an argument
+const bookPA23 = book.bind(pacificair, '23');
+// book(flightNum, name) - since flight num is already provided, we just supply the name
+bookPA23('John Kennedy'); // John Kennedy booked a seat on Pacific Air flight PA23 script.js:11:13
+
+/***************************************************/
+
+// Example - WITH EVENT LISTENERS
+fijiairways.planes = 300;
+fijiairways.buyPlane = function () {
+  // For event handler functions, the this keyword always points to the element on which that handler is attached to
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+};
+
+// So we need to manually define the this keyword
+document
+  .querySelector('.buy')
+  .addEventListener('click', fijiairways.buyPlane.bind(fijiairways));
+
+/***************************************************/
+
+// Example - PARTIAL APPLICATION
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200)); // 220
+
+// Presetting the rate with partial application
+const addVAT = addTax.bind(null, 0.3);
+console.log(addVAT(200)); // 260
+
+// Example - Rewrite addVAT as a function returning another function
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addVAT2 = addTaxRate(0.4);
+console.log(addVAT2(100)); // 140
+console.log(addVAT2(220)); // 308
