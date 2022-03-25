@@ -31,8 +31,21 @@ console.log(movementsDes);
 ///////////////////////////////////////////////////
 // FILTER
 // 2. Filter is used to filter for elements in an array which satisfy a certain condition - returns a new array containing the array elements that passed a specific test condition
+// This condition is defined by using a call back function
 
+// Eg 1: Filter the deposits from the movements array
+const deposits = movements.filter(function (mov) {
+  return mov > 0; // only true values are returned
+});
+console.log(deposits); // [200, 450, 3000, 70, 1300]
 
-///////////////////////////////////////////////////
-// REDUCE
-// 3. Reduce is used to reduce all array elements down to one single value, it uses an accumulator and the current value to reduce the array into a single element eg. adding all elements together
+const withdrawals = movements.filter(function (mov) {
+  return mov < 0;
+});
+console.log(withdrawals); // [-400, -650, -130]
+
+// Filtering with a for of loop (Pushing into an empty array)
+// Note: You cannot chain methods with for of loops
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor); // [200, 450, 3000, 70, 1300]
