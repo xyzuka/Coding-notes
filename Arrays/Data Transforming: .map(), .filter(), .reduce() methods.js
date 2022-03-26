@@ -74,3 +74,9 @@ let balance3 = 0;
 for (const mov of movements) balance3 += mov;
 console.log(balance2); // 3840
 
+// FINDING MAXIMUM VALUE with reduce
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+console.log(max); // 3000
