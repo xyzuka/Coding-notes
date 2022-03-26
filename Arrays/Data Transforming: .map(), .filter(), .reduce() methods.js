@@ -49,3 +49,28 @@ console.log(withdrawals); // [-400, -650, -130]
 const depositsFor = [];
 for (const mov of movements) if (mov > 0) depositsFor.push(mov);
 console.log(depositsFor); // [200, 450, 3000, 70, 1300]
+
+///////////////////////////////////////////////////
+// REDUCE
+// 3. Reduce is used to reduce all array elements down to one single value, it uses an accumulator and the current value to reduce the array into a single element eg. adding all elements together
+// first parameter - accumulator
+// second parameter - current number
+// third parameter - current index
+// fourth parameter - the current array
+// ** At the end of the function, you need to define the start of the accumulator ie. 0 below
+
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  console.log(`Iteration ${i + 1}: ${acc}`);
+  return (acc += cur);
+}, 0);
+console.log(balance); // 3840
+
+// Example as an arrow function
+const balance2 = movements.reduce((acc, cur) => (acc += cur), 0);
+console.log(balance2); // 3840
+
+// Example above as a for of loop
+let balance3 = 0;
+for (const mov of movements) balance3 += mov;
+console.log(balance2); // 3840
+
