@@ -80,3 +80,32 @@ const max = movements.reduce((acc, mov) => {
   else return mov;
 }, movements[0]);
 console.log(max); // 3000
+
+/////////////////////////////////////////////////
+// CHAINING ARRAY METHODS
+
+// We can also chain methods all at once
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// Example: The movements in the array above are in EUR, convert the deposits only to USD using an exchange rate of 1.1;
+
+const eurToUSD = 1.1;
+
+const totalDepositsUSD = movements
+  .filter((mov) => mov > 0) // returning deposits
+  .map((mov) => mov * eurToUSD) // returning a new array of converted EUR to USD
+  .reduce((acc, mov) => acc + mov, 0); // summing all the deposits
+
+console.log(totalDepositsUSD); // 5522.000000000001
+
+// Note: If you are debugging chained methods, we can console log the array
+const totalDepositsUSDError = movements
+  .filter((mov) => mov < 0)
+  .map((mov, i, arr) => {
+    console.log(arr); // [-400, -650, -130] -> we can see the array are the withdrawals, therefore the result of the bug is the previous method logic used
+    return mov * eurToUSD;
+  }) // console logging the array at this specific point of the function
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsUSDError); // -1298.0000000000002
+
