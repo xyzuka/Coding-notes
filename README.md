@@ -1,3 +1,3 @@
 # Coding Notes
 
-Various files used to practice coding exercises
+Notes from learning JavaScript and practice coding exercises
