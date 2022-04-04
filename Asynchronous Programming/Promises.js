@@ -35,11 +35,11 @@ const renderCountry = function (data, className = '') {
 };
 
 const getCountryData = function (country) {
-  // Fetch function returns a promise, the promise is handled with the then method
+  // Fetch function returns a promise, the response of the promise is handled with the then method
   fetch(`https://restcountries.com/v2/name/${country}`)
     // To read the data, we call the json method on the response object (also since json also returns a promise, we need to return the json method)
     .then(response => response.json())
-    // The resolved value from the json method will be the data itself
+    // The resolved value from the json method will be the data itself, which we can then render the country on the DOM
     .then(data => renderCountry(data[0]));
 };
 getCountryData('usa');
