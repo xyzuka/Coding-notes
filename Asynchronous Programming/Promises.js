@@ -39,7 +39,17 @@ const getCountryData = function (country) {
   fetch(`https://restcountries.com/v2/name/${country}`)
     // To read the data, we call the json method on the response object (also since json also returns a promise, we need to return the json method)
     .then(response => response.json())
-    // The resolved value from the json method will be the data itself, which we can then render the country on the DOM
-    .then(data => renderCountry(data[0]));
+    // The returned value of the response above will be fulfilled value of the promise which will be handled by the next then method below
+    .then(data => {
+      renderCountry(data[0]);
+      // Chaining promises methods to also get neighboring country
+      const neighbor = data[0].borders[0];
+      if (!neighbor) return;
+      return fetch(`https://restcountries.com/v2/alpha/${neighbor}`);
+    })
+    //* CHAINING METHODS
+    // This then method is dealing with the fulfilled value (returned) of the fetch for the neighbor value
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'));
 };
 getCountryData('usa');
