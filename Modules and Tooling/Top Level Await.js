@@ -1,4 +1,6 @@
 //* TOP LEVEL AWAIT
+// Top-level await enables developers to use the await keyword outside of async functions. 
+
 console.log(`Start fetching`);
 const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
 const data = await res.json();
