@@ -1,3 +1,5 @@
+// Quick YT explaination -> https://www.youtube.com/watch?v=bq_jZY6Skto
+
 class PersonCl {
   constructor(fullName, birthYear) {
     this.fullName = fullName;
